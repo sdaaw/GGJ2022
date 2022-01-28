@@ -43,18 +43,6 @@ public class OrbitingCube : MonoBehaviour
         {
             dadObject = gameObject;
         }
-        rend = GetComponent<Renderer>();
-        Color color = new Color(glowStrength, glowStrength, glowStrength);
-        color = new Color(glowStrength + baseColor.r + Random.Range(0, randColorVar), glowStrength + baseColor.g + Random.Range(0, randColorVar), glowStrength + baseColor.b + Random.Range(0, randColorVar));
-        if (rend != null)
-        {
-            rend.material.color = color;
-        }
-        else
-        {
-            objectMaterial.color = color;
-        }
-
         if (doChildren)
         {
             doChildren = false;
