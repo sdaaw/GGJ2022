@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlowCubeBehaviour : MonoBehaviour
+public class OrbitingCube : MonoBehaviour
 {
-    public enum EffectType // your custom enumeration
-    {
-        Pulsing,
-        Wandering,
-        Circling
-    };
+
     public bool doRotation;
     public float rotationSpeed;
-
-    public float pulseSpeed;
 
     [Range(0f, 1f)]
     public float randColorVar;
@@ -27,14 +20,9 @@ public class GlowCubeBehaviour : MonoBehaviour
 
     public Material objectMaterial;
 
-    public EffectType effectType;
-
-    private delegate void EffectDelegate();
-    private EffectDelegate effectMethod;
 
     public bool doChildren;
     public int childrenAmount;
-    public float childrenSpread;
     public float orbitRadius;
     public float orbitSpeed;
 
@@ -67,12 +55,6 @@ public class GlowCubeBehaviour : MonoBehaviour
             objectMaterial.color = color;
         }
 
-        //delegates pog!!
-        if(effectType == EffectType.Pulsing)
-        {
-            effectMethod = PulseCube;
-        }
-
         if (doChildren)
         {
             doChildren = false;
@@ -84,8 +66,6 @@ public class GlowCubeBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //saves a few cpu cycles maybe from not checking an extra IF-statement hahahasufhdsfjgfhdf
-
 
 
         if(doRotation)
@@ -95,15 +75,12 @@ public class GlowCubeBehaviour : MonoBehaviour
         if(rend.material.color != baseColor)
         {
             Color color = new Color(glowStrength, glowStrength, glowStrength);
-            color = new Color(glowStrength + baseColor.r + Random.Range(0, randColorVar), glowStrength + baseColor.g + Random.Range(0, randColorVar), glowStrength + baseColor.b + Random.Range(0, randColorVar));
+            color = new Color(glowStrength + baseColor.r, glowStrength + baseColor.g, glowStrength + baseColor.b);
             rend.material.color = color;
         }
         if (orbitChildren)
         {
             OrbitAround(orbitRadius, orbitSpeed);
-        } else
-        {
-            effectMethod();
         }
 
 
@@ -113,24 +90,18 @@ public class GlowCubeBehaviour : MonoBehaviour
     {
         for(int i = 0; i < childrenAmount; i++)
         {
-            GlowCubeBehaviour gcb;
-            GameObject a = Instantiate(gameObject, new Vector3(transform.position.x + Random.Range(-childrenSpread, childrenSpread), transform.position.y + Random.Range(-childrenSpread, childrenSpread), transform.position.z + Random.Range(-childrenSpread, childrenSpread)), Quaternion.identity);
+            GameObject a = Instantiate(gameObject, new Vector3(transform.position.x, transform.position.y , transform.position.z), Quaternion.identity);
             a.transform.localScale = new Vector3(transform.localScale.x / 4, transform.localScale.y / 4, transform.localScale.z / 4);
-            gcb = a.GetComponent<GlowCubeBehaviour>();
-            gcb.pulseSpeed = pulseSpeed / 2;
-            gcb.rotationSpeed = rotationSpeed / 2;
-            gcb.pulseSpeed = 0;
-            gcb.glowStrength = glowStrength / 1.5f;
             a.GetComponent<Renderer>().material.color = new Color(glowStrength + baseColor.r + Random.Range(0, randColorVar), glowStrength + baseColor.g + Random.Range(0, randColorVar), glowStrength + baseColor.b + Random.Range(0, randColorVar));
             AddOrbitingObject(a);
         }
     }
 
-    private void PulseCube()
+    /*private void PulseCube()
     {
         sinVal = Mathf.Sin(Time.time * pulseSpeed) * 0.02f;
         transform.localScale = new Vector3(transform.localScale.x + sinVal, transform.localScale.y + sinVal, transform.localScale.z + sinVal);
-    }
+    }*/
 
 
     public void AddOrbitingObject(GameObject o)
@@ -141,7 +112,7 @@ public class GlowCubeBehaviour : MonoBehaviour
         for (int i = 0; i < orbitingObjects.Count; i++)
         {
             angle = theta * i;
-            orbitingObjects[i].GetComponent<GlowCubeBehaviour>().currOrbitAngle = angle;
+            orbitingObjects[i].GetComponent<OrbitingCube>().currOrbitAngle = angle;
         }
     }
 
@@ -151,8 +122,8 @@ public class GlowCubeBehaviour : MonoBehaviour
         {
             foreach (GameObject o in orbitingObjects)
             {
-                o.GetComponent<GlowCubeBehaviour>().currOrbitAngle += speed * Time.deltaTime;
-                Vector3 offset = new Vector3(Mathf.Sin(o.GetComponent<GlowCubeBehaviour>().currOrbitAngle), Mathf.Sin(o.GetComponent<GlowCubeBehaviour>().currOrbitAngle * (Time.deltaTime * 10)), Mathf.Cos(o.GetComponent<GlowCubeBehaviour>().currOrbitAngle)) * radius;
+                o.GetComponent<OrbitingCube>().currOrbitAngle += speed * Time.deltaTime;
+                Vector3 offset = new Vector3(Mathf.Sin(o.GetComponent<OrbitingCube>().currOrbitAngle), Mathf.Sin(o.GetComponent<OrbitingCube>().currOrbitAngle * (Time.deltaTime * 10)), Mathf.Cos(o.GetComponent<OrbitingCube>().currOrbitAngle)) * radius;
                 
                 Vector3 pos = new Vector3(-Mathf.Sin(Time.time), Mathf.Sin(Time.time), -Mathf.Cos(Time.time));
                 o.transform.Rotate(Vector3.right, 5f);
