@@ -72,12 +72,6 @@ public class OrbitingCube : MonoBehaviour
         {
             transform.Rotate(Vector3.up, rotationSpeed);
         }
-        if(rend.material.color != baseColor)
-        {
-            Color color = new Color(glowStrength, glowStrength, glowStrength);
-            color = new Color(glowStrength + baseColor.r, glowStrength + baseColor.g, glowStrength + baseColor.b);
-            rend.material.color = color;
-        }
         if (orbitChildren)
         {
             OrbitAround(orbitRadius, orbitSpeed);
