@@ -65,9 +65,23 @@ public class GenerateMap : MonoBehaviour
         //add tile to back of queu
 
         GameObject mapObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count - 1)], mapHolder);
+        Vector3 ogScale;
+        ogScale = mapObject.transform.localScale;
+        mapObject.transform.localScale = Vector3.zero;
+        StartCoroutine(AnimateTile(mapObject, ogScale));
         mapObject.transform.position += new Vector3(0,0, _spawnOffset);
         _spawnOffset += spawnOffset;
         currentMapObjects.Enqueue(mapObject);
+    }
+
+
+    IEnumerator AnimateTile(GameObject g, Vector3 ogScale)
+    {
+        for(float i = 0; i < 1f; i += 0.01f)
+        {
+            g.transform.localScale = new Vector3(ogScale.x * i, ogScale.y * i, ogScale.z * i);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     private void RemoveOldTile()

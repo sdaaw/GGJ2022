@@ -27,7 +27,7 @@ public class FlyingObjectBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randDir = Random.insideUnitCircle.normalized;
+        randDir = Random.insideUnitCircle.normalized; //for rotation
         if(baseMaterialObject != null)
         {
             if (baseMaterialObject.GetComponent<Renderer>().material != null)
