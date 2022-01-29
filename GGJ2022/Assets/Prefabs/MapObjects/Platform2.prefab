@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 8178958400339455882}
 --- !u!1 &8178958400339455882
 GameObject:
   m_ObjectHideFlags: 0
