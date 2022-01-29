@@ -30,6 +30,9 @@ public class Character : MonoBehaviour
     public float jumpTimer = 1.5f;
     private float _jumpTimer;
 
+    [SerializeField]
+    private float _jumpHeight = 5;
+
     public enum CharacterType
     {
         Character1,
@@ -44,7 +47,7 @@ public class Character : MonoBehaviour
         _rotateLevel = FindObjectOfType<RotateLevel>();
 
         _startPos = transform.position;
-        _highPos = _startPos + new Vector3(0, 5, 0);
+        _highPos = _startPos + new Vector3(0, _jumpHeight, 0);
 
     }
 

@@ -21,6 +21,15 @@ public class GenerateMap : MonoBehaviour
     public float spawnOffset = 15;
     private float _spawnOffset;
 
+    [SerializeField]
+    private GameObject _plateHolderPrefab;
+
+    [SerializeField]
+    private List<Plate> _platePrefabs = new List<Plate>();
+
+    [SerializeField]
+    private List<Vector3> _platePositions = new List<Vector3>();
+
 
     private void Start()
     {
@@ -35,7 +44,7 @@ public class GenerateMap : MonoBehaviour
         if(_newTileTimer <= 0)
         {
             _newTileTimer = NewTileTimer;
-            AddNewRandomTile();
+            GenerateMapObject();
         }
         else
         {
@@ -56,7 +65,7 @@ public class GenerateMap : MonoBehaviour
     private void InitMap()
     {
         for (int i = 0; i < startAmount; i++)
-            AddNewRandomTile();
+            GenerateMapObject();
     }
 
     private void AddNewRandomTile()
@@ -64,7 +73,7 @@ public class GenerateMap : MonoBehaviour
         //pick random/next tile
         //add tile to back of queu
 
-        GameObject mapObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count - 1)], mapHolder);
+        GameObject mapObject = Instantiate(_prefabs[Random.Range(0, _prefabs.Count)], mapHolder);
         Vector3 ogScale;
         ogScale = mapObject.transform.localScale;
         mapObject.transform.localScale = Vector3.zero;
@@ -88,6 +97,28 @@ public class GenerateMap : MonoBehaviour
     {
         GameObject oldMapObject = currentMapObjects.Dequeue();
         Destroy(oldMapObject);
+    }
+
+    private void GenerateMapObject()
+    {
+        GameObject cylinderHolder = Instantiate(_plateHolderPrefab, mapHolder);
+
+        //generate 6 sides
+        for(int i = 0; i < 6; i++)
+        {
+            Plate plate = Instantiate(_platePrefabs[Random.Range(0, _platePrefabs.Count)], cylinderHolder.transform);
+            plate.transform.Rotate(Vector3.forward, i * 60);
+            plate.transform.localPosition = _platePositions[i];
+        }
+
+        Vector3 ogScale;
+        ogScale = cylinderHolder.transform.localScale;
+        cylinderHolder.transform.localScale = Vector3.zero;
+        StartCoroutine(AnimateTile(cylinderHolder, ogScale));
+        cylinderHolder.transform.position += new Vector3(0, 0, _spawnOffset);
+        _spawnOffset += spawnOffset;
+
+        currentMapObjects.Enqueue(cylinderHolder);
     }
 
 }
