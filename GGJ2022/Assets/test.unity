@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 750
   jumpKey: 273
+  characterType: 1
 --- !u!136 &776627130
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -682,3 +683,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpSpeed: 750
   jumpKey: 119
+  characterType: 0

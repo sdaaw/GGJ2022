@@ -16,6 +16,14 @@ public class Character : MonoBehaviour
     [SerializeField]
     private KeyCode jumpKey;
 
+    public CharacterType characterType;
+
+    public enum CharacterType
+    {
+        Character1,
+        Character2
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -31,13 +39,18 @@ public class Character : MonoBehaviour
         {
             Jump();
         }
+
+        //swap characters sides
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SwapCharacter();
+        }
       
     }
 
-
     public void SwapCharacter()
     {
-
+        characterType = (characterType == CharacterType.Character1) ? CharacterType.Character2 : CharacterType.Character1;
     }
 
     private bool IsGrounded()
