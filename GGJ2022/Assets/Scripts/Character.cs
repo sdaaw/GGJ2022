@@ -13,6 +13,9 @@ public class Character : MonoBehaviour
 
     private RotateLevel _rotateLevel;
 
+    [SerializeField]
+    private KeyCode jumpKey;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -24,7 +27,7 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.W))
+        if (IsGrounded() && Input.GetKeyDown(jumpKey))
         {
             Jump();
         }

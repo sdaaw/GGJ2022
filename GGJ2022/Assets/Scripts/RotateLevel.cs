@@ -11,16 +11,22 @@ public class RotateLevel : MonoBehaviour
 
     public float speedIncrease = 1;
 
-    private Character _character;
+    [SerializeField]
+    private Character _characterOfLevel = null;
 
     public float RotateCooldown = 1;
     private float _rotateCooldown = 1;
 
     private Vector3 _originalGravityScale;
 
+    [SerializeField]
+    private KeyCode Left;
+    [SerializeField]
+    private KeyCode Right;
+
     private void Awake()
     {
-        _character = FindObjectOfType<Character>();
+        //_characterOfLevel = FindObjectOfType<Character>();
         _rotateCooldown = 0;
         Physics.gravity *= 3;
         _originalGravityScale = Physics.gravity;
@@ -45,17 +51,17 @@ public class RotateLevel : MonoBehaviour
 
     private void CheckRotate()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(Right))
         {
             _rotateCooldown = RotateCooldown;
-            _character.transform.position = new Vector3(_character.transform.position.x, 5, _character.transform.position.z);
+            _characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             _levelObject.Rotate(Vector3.forward, 60);
             
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(Left))
         {
             _rotateCooldown = RotateCooldown;
-            _character.transform.position = new Vector3(_character.transform.position.x, 5, _character.transform.position.z);
+            _characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             _levelObject.Rotate(Vector3.back, 60);
            
         }
