@@ -23,6 +23,13 @@ public class Character : MonoBehaviour
     public float characterHealth = 3;
     private float _characterHealth;
 
+    private bool _isJumping;
+    private Vector3 _startPos;
+    private Vector3 _highPos;
+
+    public float jumpTimer = 1.5f;
+    private float _jumpTimer;
+
     public enum CharacterType
     {
         Character1,
@@ -35,6 +42,9 @@ public class Character : MonoBehaviour
         _collider = GetComponent<CapsuleCollider>();
         _distToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
         _rotateLevel = FindObjectOfType<RotateLevel>();
+
+        _startPos = transform.position;
+        _highPos = _startPos + new Vector3(0, 5, 0);
 
     }
 
@@ -51,6 +61,24 @@ public class Character : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             SwapCharacter();
+        }
+
+        if(_isJumping)
+        {
+            _jumpTimer += Time.deltaTime;
+
+            if(_jumpTimer < (jumpTimer / 2))
+                transform.position = Vector3.Lerp(_startPos, _highPos, _jumpTimer / jumpTimer);
+
+            if (_jumpTimer > (jumpTimer / 2))
+                transform.position = Vector3.Lerp(_highPos, _startPos, _jumpTimer / jumpTimer);
+
+            if(_jumpTimer > jumpTimer)
+            {
+                transform.position = _startPos;
+                _isJumping = false;
+                _jumpTimer = 0;
+            }
         }
       
     }
@@ -73,12 +101,8 @@ public class Character : MonoBehaviour
 
     public void Jump()
     {
-        _rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
-    }
-
-    public void Slide()
-    {
-
+        //_rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
+        _isJumping = true;
     }
 
     public void CheckUnder()

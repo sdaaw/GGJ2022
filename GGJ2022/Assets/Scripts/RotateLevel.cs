@@ -9,7 +9,8 @@ public class RotateLevel : MonoBehaviour
     [SerializeField]
     private float _speed = 0;
 
-    public float speedIncrease = 1;
+    public float speedIncreaseInspector = 1;
+    public static float speedIncrease = 1;
 
     [SerializeField]
     private Character _characterOfLevel = null;
@@ -28,13 +29,14 @@ public class RotateLevel : MonoBehaviour
     {
         //_characterOfLevel = FindObjectOfType<Character>();
         _rotateCooldown = 0;
-        Physics.gravity *= 3;
-        _originalGravityScale = Physics.gravity;
+        //Physics.gravity *= 3;
+        //_originalGravityScale = Physics.gravity;
     }
 
     private void Update()
     {
         //if(game is not paused)
+        //speedIncrease = speedIncreaseInspector;
 
         if (_rotateCooldown <= 0)
         {
@@ -42,11 +44,11 @@ public class RotateLevel : MonoBehaviour
         }
         else
         {
-            _rotateCooldown -= Time.deltaTime * speedIncrease;
+            _rotateCooldown -= Time.deltaTime;
         }
 
         MoveMap(speedIncrease);
-        Physics.gravity = _originalGravityScale * speedIncrease;
+        //Physics.gravity = _originalGravityScale * speedIncrease;
     }
 
     private void CheckRotate()

@@ -21,14 +21,11 @@ public class GenerateMap : MonoBehaviour
     public float spawnOffset = 15;
     private float _spawnOffset;
 
-    private RotateLevel _rotateLevel;
 
     private void Start()
     {
         _newTileTimer = 0;
         _spawnOffset = spawnOffset;
-
-        _rotateLevel = FindObjectOfType<RotateLevel>();
 
         InitMap();
     }
@@ -42,7 +39,7 @@ public class GenerateMap : MonoBehaviour
         }
         else
         {
-            _newTileTimer -= Time.deltaTime * _rotateLevel.speedIncrease;
+            _newTileTimer -= Time.deltaTime * RotateLevel.speedIncrease;
         }
 
         if(_removeTileTimer <= 0)
@@ -52,7 +49,7 @@ public class GenerateMap : MonoBehaviour
         }
         else
         {
-            _removeTileTimer -= Time.deltaTime * _rotateLevel.speedIncrease;
+            _removeTileTimer -= Time.deltaTime * RotateLevel.speedIncrease;
         }
     }
 

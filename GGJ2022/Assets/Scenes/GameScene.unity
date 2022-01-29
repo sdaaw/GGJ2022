@@ -227,6 +227,7 @@ MonoBehaviour:
   characterType: 1
   currentPlate: {fileID: 0}
   characterHealth: 3
+  jumpTimer: 0.5
 --- !u!136 &188641773
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -348,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188641771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.6, y: 25.78, z: 27.5}
+  m_LocalPosition: {x: 2092, y: 1, z: 27.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1484643223}
@@ -411,9 +412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelObject: {fileID: 546432926}
   _speed: 5
-  speedIncrease: 1
+  speedIncreaseInspector: 1
   _characterOfLevel: {fileID: 2064174363}
-  RotateCooldown: 1
+  RotateCooldown: 0.15
   Left: 97
   Right: 100
 --- !u!4 &546432926
@@ -883,9 +884,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelObject: {fileID: 1326698166}
   _speed: 5
-  speedIncrease: 1
+  speedIncreaseInspector: 1
   _characterOfLevel: {fileID: 188641772}
-  RotateCooldown: 1
+  RotateCooldown: 0.15
   Left: 276
   Right: 275
 --- !u!4 &1326698166
@@ -1288,6 +1289,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1933451826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933451828}
+  - component: {fileID: 1933451827}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1933451827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933451826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480e1eb9c0b4999459b231de167108fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDifficultyScaler: 1
+--- !u!4 &1933451828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933451826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1961753038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,6 +1465,7 @@ MonoBehaviour:
   characterType: 0
   currentPlate: {fileID: 0}
   characterHealth: 3
+  jumpTimer: 2
 --- !u!136 &2064174364
 CapsuleCollider:
   m_ObjectHideFlags: 0
