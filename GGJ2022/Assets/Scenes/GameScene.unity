@@ -1663,6 +1663,10 @@ MonoBehaviour:
   objectList:
   - {fileID: 4992581248094967047, guid: 11eba273d932ffc43affa2a7e41d7440, type: 3}
   - {fileID: 7299788217859394863, guid: 22e42790f3c034b41810e29cfc627543, type: 3}
+  - {fileID: 2980871900445845656, guid: 8f7650bac516e1943bd1e7adef6ceac8, type: 3}
+  - {fileID: 3305103005345775029, guid: ae66888fbdf70964b83ed465aead717b, type: 3}
+  - {fileID: 6086031774614830748, guid: 4897fcc19325a6245adb2562b575263f, type: 3}
+  - {fileID: 4273782046405108905, guid: 859f4fc4667ea1b41a9e5e6eba000f6c, type: 3}
   spawnPositionList:
   - {fileID: 1895513682}
   - {fileID: 1331308413}
