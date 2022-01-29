@@ -49,8 +49,8 @@ MonoBehaviour:
   objectScale: 0
   glowColor: {r: 0, g: 0, b: 0, a: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
-  baseMaterial: {fileID: 0}
-  glowMaterial: {fileID: 2100000, guid: 695eb33b156d72444a11698d77b12482, type: 2}
+  baseMaterialObject: {fileID: 8660328936200933426}
+  glowMaterialObject: {fileID: 3789159016364689286}
   direction: {x: 0, y: 0, z: -1}
   lifeTime: 5
 --- !u!1001 &4992581246419490832
@@ -121,5 +121,15 @@ PrefabInstance:
 --- !u!4 &4810846385280729083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4c942b9f82789de449fc390c4630ec35, type: 3}
+  m_PrefabInstance: {fileID: 4992581246419490832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3789159016364689286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1018664272722485354, guid: 4c942b9f82789de449fc390c4630ec35, type: 3}
+  m_PrefabInstance: {fileID: 4992581246419490832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8660328936200933426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4424396828587804706, guid: 4c942b9f82789de449fc390c4630ec35, type: 3}
   m_PrefabInstance: {fileID: 4992581246419490832}
   m_PrefabAsset: {fileID: 0}

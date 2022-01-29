@@ -13,8 +13,8 @@ public class FlyingObjectBehaviour : MonoBehaviour
     public Color glowColor;
     public Color baseColor;
 
-    public Material baseMaterial;
-    public Material glowMaterial;
+    public GameObject baseMaterialObject;
+    public GameObject glowMaterialObject;
 
     private Material gm0, bm0;
 
@@ -27,17 +27,23 @@ public class FlyingObjectBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         randDir = Random.insideUnitCircle.normalized;
-        if (baseMaterial != null)
+        if(baseMaterialObject != null)
         {
-            bm0 = new Material(baseMaterial);
+            if (baseMaterialObject.GetComponent<Renderer>().material != null)
+            {
+                bm0 = new Material(baseMaterialObject.GetComponent<Renderer>().material);
+                baseMaterialObject.GetComponent<Renderer>().material = bm0;
+            }
         }
-        if(glowMaterial != null)
+        if(glowMaterialObject != null)
         {
-            gm0 = new Material(glowMaterial);
-
-            glowMaterial.SetColor("_EmissionColor", GetRandomBrightColor());
+            if (glowMaterialObject.GetComponent<Renderer>().material != null)
+            {
+                gm0 = new Material(glowMaterialObject.GetComponent<Renderer>().material);
+                glowMaterialObject.GetComponent<Renderer>().material = gm0;
+                glowMaterialObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", GetRandomBrightColor());
+            }
         }
 
     }
