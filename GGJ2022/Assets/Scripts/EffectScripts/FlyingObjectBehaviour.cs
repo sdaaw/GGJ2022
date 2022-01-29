@@ -36,16 +36,15 @@ public class FlyingObjectBehaviour : MonoBehaviour
         if(glowMaterial != null)
         {
             gm0 = new Material(glowMaterial);
-            GetComponent<Renderer>().material = gm0;
 
-            gm0.color = GetRandomBrightColor();
+            glowMaterial.SetColor("_EmissionColor", GetRandomBrightColor());
         }
 
     }
 
     private Color GetRandomBrightColor()
     {
-        return new Color(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1));
+        return new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
     // Update is called once per frame
     void FixedUpdate()

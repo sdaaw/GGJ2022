@@ -50,9 +50,8 @@ MonoBehaviour:
   glowColor: {r: 0, g: 0, b: 0, a: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   baseMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  glowMaterial: {fileID: 2100000, guid: 695eb33b156d72444a11698d77b12482, type: 2}
   direction: {x: 0, y: 0, z: -1}
-  m_camera: {fileID: 0}
   lifeTime: 5
 --- !u!1001 &4992581246419490832
 PrefabInstance:
