@@ -39,6 +39,11 @@ public class Character : MonoBehaviour
         Character2
     }
 
+    [SerializeField]
+    private GameObject _character1;
+    [SerializeField]
+    private GameObject _character2;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -89,6 +94,16 @@ public class Character : MonoBehaviour
     public void SwapCharacter()
     {
         characterType = (characterType == CharacterType.Character1) ? CharacterType.Character2 : CharacterType.Character1;
+        if(characterType == CharacterType.Character1)
+        {
+            _character1.SetActive(true);
+            _character2.SetActive(false);
+        }
+        else if(characterType == CharacterType.Character2)
+        {
+            _character1.SetActive(false);
+            _character2.SetActive(true);
+        }
     }
 
     private bool IsGrounded()
