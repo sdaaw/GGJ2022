@@ -9,6 +9,10 @@ public class ObjectThrower : MonoBehaviour
 
     public float objectSpawnInterval;
     private float timer;
+    public float minScale;
+    public float maxScale;
+
+    public Vector3 direction;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +35,10 @@ public class ObjectThrower : MonoBehaviour
     {
         GameObject a = Instantiate(g, spawnPositionList[Random.Range(0, spawnPositionList.Count)].transform.position, Quaternion.identity);
         FlyingObjectBehaviour fob = a.GetComponent<FlyingObjectBehaviour>();
-        float randScale = Random.Range(0.5f, 1.5f);
+        float randScale = Random.Range(minScale, maxScale);
         a.transform.localScale = new Vector3(randScale, randScale, randScale);
         fob.movementSpeed = Random.Range(50, 150);
         fob.rotationSpeed = fob.movementSpeed;
+        fob.direction = direction;
     }
 }
