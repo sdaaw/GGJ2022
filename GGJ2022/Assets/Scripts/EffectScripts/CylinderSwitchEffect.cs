@@ -12,7 +12,7 @@ public class CylinderSwitchEffect : MonoBehaviour
     public GameObject cylinder;
     public GameObject cylinder2;
 
-
+    private Material outerMaterial;
 
     private int idx;
 
@@ -32,10 +32,10 @@ public class CylinderSwitchEffect : MonoBehaviour
             runtimeMaterialList.Add(m0);
             m0.SetColor("_BaseColor", color);
         }
-        cylinder.GetComponent<Renderer>().material = materialList[0];
-        cylinder2.GetComponent<Renderer>().material = materialList[1];
-        materialList[idx].SetColor("_BaseColor", new Color(materialList[idx].color.r, materialList[idx].color.g, materialList[idx].color.b, 1));
-        materialList[idx + 1].SetColor("_BaseColor", new Color(materialList[idx].color.r, materialList[idx].color.g, materialList[idx].color.b, 0));
+        cylinder2.GetComponent<Renderer>().material = runtimeMaterialList[0];
+
+        //materialList[idx].SetColor("_BaseColor", new Color(materialList[idx].color.r, materialList[idx].color.g, materialList[idx].color.b, 1));
+        //materialList[idx + 1].SetColor("_BaseColor", new Color(materialList[idx].color.r, materialList[idx].color.g, materialList[idx].color.b, 0));
         StartCoroutine(switchCylinder());
     }
 
@@ -43,8 +43,9 @@ public class CylinderSwitchEffect : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         float offset = Time.time * 0.1f;
-        runtimeMaterialList[idx].mainTextureOffset = new Vector2(offset, offset);
+        cylinder.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(offset, offset);
         //runtimeMaterialList[idx].SetColor("_EmissionColor", Color.Lerp(GetRandomColor(), GetRandomColor(), 1f));
     }
 
@@ -55,23 +56,35 @@ public class CylinderSwitchEffect : MonoBehaviour
 
     IEnumerator switchCylinder()
     {
-        //materialList[idx].SetColor("_BaseColor", new Color(materialList[idx].color.r, materialList[idx].color.g, materialList[idx].color.b, 1));
+        yield return new WaitForSeconds(timeBetweenSwitches);
+        StartCoroutine(FadeIn(runtimeMaterialList[idx]));
+    }
+
+
+    IEnumerator FadeIn(Material m)
+    {
+        for(float i = 0; i < 1; i += 0.01f)
+        {
+            Color color = new Color(1, 1, 1, 0 + i);
+            m.SetColor("_BaseColor", color);
+            yield return new WaitForSeconds(switchSpeed);
+        }
+        idx++;
+        if(idx >= runtimeMaterialList.Count)
+        {
+            idx = 0;
+        }
+        StartCoroutine(FadeOut(runtimeMaterialList[idx]));
+    }
+    IEnumerator FadeOut(Material m)
+    {
         for (float i = 0; i < 1; i += 0.01f)
         {
             Color color = new Color(1, 1, 1, 1 - i);
-            Color color2 = new Color(1, 1, 1, 1 + i);
-            runtimeMaterialList[idx].SetColor("_BaseColor", color);
-            if(idx + 1 == materialList.Count - 1)
-            {
-                runtimeMaterialList[0].SetColor("_BaseColor", color2);
-            } 
-            else
-            {
-                runtimeMaterialList[idx + 1].SetColor("_BaseColor", color2);
-            }
+            m.SetColor("_BaseColor", color);
             yield return new WaitForSeconds(switchSpeed);
         }
-        yield return new WaitForSeconds(timeBetweenSwitches);
+        cylinder2.GetComponent<Renderer>().material = runtimeMaterialList[idx];
         StartCoroutine(switchCylinder());
     }
 }

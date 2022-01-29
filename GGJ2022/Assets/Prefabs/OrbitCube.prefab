@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7299788217859394849}
   - component: {fileID: 7299788217859394848}
   - component: {fileID: 7299788217859394852}
+  - component: {fileID: -5097964476864516133}
   m_Layer: 0
   m_Name: OrbitCube
   m_TagString: Untagged
@@ -111,7 +112,7 @@ MonoBehaviour:
   doRotation: 1
   rotationSpeed: 5
   randColorVar: 0.35
-  glowStrength: 0.913
+  glowStrength: 1
   baseColor: {r: 0.06697796, g: 0.06132078, b: 1, a: 0}
   objectMaterial: {fileID: 0}
   doChildren: 1
@@ -119,3 +120,24 @@ MonoBehaviour:
   orbitRadius: 2
   orbitSpeed: 3
   orbitChildren: 1
+--- !u!114 &-5097964476864516133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299788217859394863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfd4986650006643b812abb1559c380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0
+  movementSpeed: 0
+  objectScale: 0
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  baseMaterial: {fileID: 0}
+  glowMaterial: {fileID: 0}
+  direction: {x: 0, y: 0, z: -1}
+  lifeTime: 5
