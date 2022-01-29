@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
 
     public void Jump()
     {
-        _rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 3500));
+        _rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
     }
 
     public void Slide()
