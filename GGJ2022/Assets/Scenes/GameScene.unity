@@ -1677,6 +1677,6 @@ MonoBehaviour:
   - {fileID: 960054017}
   - {fileID: 788425146}
   objectSpawnInterval: 0
-  minScale: 2
-  maxScale: 4
+  minScale: 0.6
+  maxScale: 2
   direction: {x: 0, y: 0, z: -1}
