@@ -6,6 +6,8 @@ public class Character : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
+    public float health = 3;
+
     public float jumpSpeed = 0;
 
     private float _distToGround;
@@ -88,7 +90,17 @@ public class Character : MonoBehaviour
                 _jumpTimer = 0;
             }
         }
+
+        if(health <= 0)
+        {
+            Dead();
+        }
       
+    }
+
+    public void Dead()
+    {
+        Debug.Log("ded");
     }
 
     public void SwapCharacter()
