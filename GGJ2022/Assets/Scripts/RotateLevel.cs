@@ -11,20 +11,54 @@ public class RotateLevel : MonoBehaviour
 
     public float speedIncrease = 1;
 
+    private Character _character;
+
+    public float RotateCooldown = 1;
+    private float _rotateCooldown = 1;
+
+    private Vector3 _originalGravityScale;
+
+    private void Awake()
+    {
+        _character = FindObjectOfType<Character>();
+        _rotateCooldown = 0;
+        Physics.gravity *= 3;
+        _originalGravityScale = Physics.gravity;
+    }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.D))
+        //if(game is not paused)
+
+        if (_rotateCooldown <= 0)
         {
-            _levelObject.Rotate(Vector3.forward, 45);
+            CheckRotate();
         }
-        else if(Input.GetKeyDown(KeyCode.A))
+        else
         {
-            _levelObject.Rotate(Vector3.back, 45);
+            _rotateCooldown -= Time.deltaTime * speedIncrease;
         }
 
-        //if(game is not paused)
         MoveMap(speedIncrease);
+        Physics.gravity = _originalGravityScale * speedIncrease;
+    }
+
+    private void CheckRotate()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            _rotateCooldown = RotateCooldown;
+            _character.transform.position = new Vector3(_character.transform.position.x, 5, _character.transform.position.z);
+            _levelObject.Rotate(Vector3.forward, 60);
+            
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            _rotateCooldown = RotateCooldown;
+            _character.transform.position = new Vector3(_character.transform.position.x, 5, _character.transform.position.z);
+            _levelObject.Rotate(Vector3.back, 60);
+           
+        }
     }
 
 

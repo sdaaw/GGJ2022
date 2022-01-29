@@ -11,21 +11,28 @@ public class Character : MonoBehaviour
     private float _distToGround;
     private CapsuleCollider _collider;
 
+    private RotateLevel _rotateLevel;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<CapsuleCollider>();
         _distToGround = GetComponent<CapsuleCollider>().bounds.extents.y;
+        _rotateLevel = FindObjectOfType<RotateLevel>();
 
     }
 
     private void Update()
     {
-        Jump();
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.W))
+        {
+            Jump();
+        }
+      
     }
 
 
-    private void SwapCharacter()
+    public void SwapCharacter()
     {
 
     }
@@ -41,19 +48,12 @@ public class Character : MonoBehaviour
         //Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - _distToGround - 1f, transform.position.z));
     }
 
-    private void Jump()
+    public void Jump()
     {
-        if(IsGrounded())
-        {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                _rigidbody.AddForce(Vector3.up * jumpSpeed);
-            }
-        }
-       
+        _rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 3500));
     }
 
-    private void Slide()
+    public void Slide()
     {
 
     }
