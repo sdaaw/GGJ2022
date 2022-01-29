@@ -54,16 +54,19 @@ public class RotateLevel : MonoBehaviour
         if (Input.GetKeyDown(Right))
         {
             _rotateCooldown = RotateCooldown;
-            _characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
+            //.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             _levelObject.Rotate(Vector3.forward, 60);
-            
+            //_characterOfLevel.CheckUnder();
+
+
         }
         else if (Input.GetKeyDown(Left))
         {
             _rotateCooldown = RotateCooldown;
-            _characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
+            //_characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             _levelObject.Rotate(Vector3.back, 60);
-           
+            //_characterOfLevel.CheckUnder();
+
         }
     }
 

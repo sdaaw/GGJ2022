@@ -18,6 +18,11 @@ public class Character : MonoBehaviour
 
     public CharacterType characterType;
 
+    public Plate currentPlate;
+
+    public float characterHealth = 3;
+    private float _characterHealth;
+
     public enum CharacterType
     {
         Character1,
@@ -35,6 +40,8 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
+        CheckUnder();
+
         if (IsGrounded() && Input.GetKeyDown(jumpKey))
         {
             Jump();
@@ -72,5 +79,19 @@ public class Character : MonoBehaviour
     public void Slide()
     {
 
+    }
+
+    public void CheckUnder()
+    {
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _distToGround + 1f);
+        if(hit.collider != null)
+        {
+            Plate plate = hit.collider.GetComponent<Plate>();
+            if(plate != null && plate != currentPlate)
+            {
+                Debug.Log(plate.plateType);
+                currentPlate = plate;
+            }   
+        }
     }
 }
