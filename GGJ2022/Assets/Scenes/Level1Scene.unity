@@ -1418,7 +1418,7 @@ MonoBehaviour:
   - {fileID: 7920130404669838574, guid: 8c708392d6044bf45ab6c3104bb151e6, type: 3}
   - {fileID: 1210621239868549926, guid: 46503d567d85f6045a4c04532385a81d, type: 3}
   - {fileID: 1210621239868549926, guid: 46503d567d85f6045a4c04532385a81d, type: 3}
-  - {fileID: 1210621239868549926, guid: 46503d567d85f6045a4c04532385a81d, type: 3}
+  - {fileID: 1210621239868549926, guid: 08a685ce74945604b8c2b5be6f71b147, type: 3}
   mapHolder: {fileID: 662262740}
   NewTileTimer: 2.5
   RemoveTileTimer: 4
@@ -2183,7 +2183,7 @@ MonoBehaviour:
   - {fileID: 1202745369907635008, guid: e0e48cf49fde5094697a00301fd67f5d, type: 3}
   - {fileID: 3062728375882907213, guid: f7d4fcca6a02a004bb782c908532a733, type: 3}
   - {fileID: 3062728375882907213, guid: f7d4fcca6a02a004bb782c908532a733, type: 3}
-  - {fileID: 3062728375882907213, guid: f7d4fcca6a02a004bb782c908532a733, type: 3}
+  - {fileID: 1210621239868549926, guid: 08a685ce74945604b8c2b5be6f71b147, type: 3}
   mapHolder: {fileID: 987355941}
   NewTileTimer: 2.5
   RemoveTileTimer: 4
