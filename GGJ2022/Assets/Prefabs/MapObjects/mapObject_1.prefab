@@ -26,6 +26,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!65 &6115537215085793320
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!65 &4390125660023690234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!65 &4902832014161452999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -117,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!1 &4792267367356202138
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!65 &9003164713503014236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -206,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 1
+  baseMaterialObject: {fileID: 0}
 --- !u!1001 &234905090934001575
 PrefabInstance:
   m_ObjectHideFlags: 0
