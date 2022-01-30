@@ -56,12 +56,10 @@ public class RotateLevel : MonoBehaviour
     {
         _rotateCooldown = RotateCooldown;
         Vector3 rot;
-        Vector3 totalRot = Vector3.zero;
         for (float i = 0; i <= degrees; i += 1f)
         {
             rot = i * dir / 30.5f; //magic
             _levelObject.Rotate(rot);
-            totalRot += rot;
             yield return new WaitForSeconds(0.001f);
         }
     }
