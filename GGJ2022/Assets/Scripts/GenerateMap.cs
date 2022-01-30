@@ -106,12 +106,20 @@ public class GenerateMap : MonoBehaviour
         //generate 6 sides
         for(int i = 0; i < 6; i++)
         {
-            Plate plate = Instantiate(_platePrefabs[Random.Range(0, _platePrefabs.Count)], cylinderHolder.transform);
+            int index = 0;
+            int rPlate = Random.Range(0, 100);
+
+            if (rPlate < 80)
+                index = Random.Range(0, 1);
+            else
+                index = Random.Range(0, _platePrefabs.Count);
+
+            Plate plate = Instantiate(_platePrefabs[index], cylinderHolder.transform);
             plate.transform.Rotate(Vector3.forward, i * 60);
             plate.transform.localPosition = _platePositions[i];
 
             int r = Random.Range(0, 100);
-            if(r<25)
+            if(r < 20)
             {
                 plate.plateType = Plate.PlateType.Empty;
                 plate.GetComponentInChildren<MeshRenderer>().enabled = false;

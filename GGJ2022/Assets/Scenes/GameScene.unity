@@ -489,6 +489,12 @@ MonoBehaviour:
   _platePrefabs:
   - {fileID: 2908427261934186568, guid: 91ab16584d270b14cafca056ffdefd4e, type: 3}
   - {fileID: 173410638248130419, guid: 2b162b11246144e4187fccb6012171fc, type: 3}
+  - {fileID: 5030903328868920840, guid: 3aa1675eaf53f3c419605f8ec8bc6fef, type: 3}
+  - {fileID: 4704612936925758537, guid: a0057aa14345bec4a8baa74162d621d1, type: 3}
+  - {fileID: 1126232224681167691, guid: 67596d2c48e8e94439af89740d1f1a35, type: 3}
+  - {fileID: 781190669689809036, guid: 38042d1e17a8ba34ca1ef9226fea992a, type: 3}
+  - {fileID: 8066813307502546865, guid: f44c839038475d546ac0ba2cff295718, type: 3}
+  - {fileID: 7876711364466533408, guid: b17f9534dbb02154ab6ff03b53a66c26, type: 3}
   _platePositions:
   - {x: 0, y: -4.840001, z: 2.42}
   - {x: 4.420001, y: -2.7599995, z: 2.69}
@@ -1235,8 +1241,15 @@ MonoBehaviour:
   spawnOffset: 15
   _plateHolderPrefab: {fileID: 8347165617753055665, guid: b9e16cf16d9fe7840848eec4baafe8c2, type: 3}
   _platePrefabs:
-  - {fileID: 2908427261934186568, guid: 91ab16584d270b14cafca056ffdefd4e, type: 3}
-  - {fileID: 173410638248130419, guid: 2b162b11246144e4187fccb6012171fc, type: 3}
+  - {fileID: 4244634569743866394, guid: 82953a6783282eb4db04f928afeedb0f, type: 3}
+  - {fileID: 5861236820294133206, guid: 8cf139787a4c73c4c828ba01b86a324c, type: 3}
+  - {fileID: 466935238288001231, guid: 74789f6bcb2cf0c47a8649819da2eb4d, type: 3}
+  - {fileID: 4979515067088154162, guid: 84c998f6ecf5eb24cace355f34981a38, type: 3}
+  - {fileID: 1383585079789471527, guid: 7dc034a6a854bf64e8aaa46cdc84ea05, type: 3}
+  - {fileID: 749300071226669229, guid: b2149c0382476f046947b35bed58b1d2, type: 3}
+  - {fileID: 2519733130905716213, guid: 2efa205fc48f6ef4ba5534722f490bb3, type: 3}
+  - {fileID: 7028346743664090325, guid: 2e72a499441f8b64baa1534162acfdef, type: 3}
+  - {fileID: 5484066181542193391, guid: 6bc3d8f2fc6b64841ac783c5f145d7cd, type: 3}
   _platePositions:
   - {x: 0, y: -4.840001, z: 2.42}
   - {x: 4.420001, y: -2.7599995, z: 2.69}
