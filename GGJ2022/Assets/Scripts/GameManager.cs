@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public Text gameOverScoreText;
 
+    public GameObject gameWonScreen;
+    public Text gameWonScroeText;
+
     public bool IsGameOver()
     {
         return _gameOver;
@@ -72,5 +75,13 @@ public class GameManager : MonoBehaviour
         gameOverScoreText.text = "Final Score:" + score.ToString("F0");
         //Display final score
         //restart
+    }
+
+    public void GameWon()
+    {
+        _gameOver = true;
+        SoundManager.PlayASource("Win");
+        gameWonScreen.SetActive(true);
+        gameWonScroeText.text = "Final Score:" + score.ToString("F0");
     }
 }
