@@ -83,6 +83,22 @@ public class GenerateMap : MonoBehaviour
         currentMapObjects.Enqueue(mapObject);
     }
 
+    private void AddNextTile(int curIndex)
+    {
+        //pick random/next tile
+        //add tile to back of queu
+
+        GameObject mapObject = Instantiate(_prefabs[curIndex], mapHolder);
+        Vector3 ogScale;
+        ogScale = mapObject.transform.localScale;
+        mapObject.transform.localScale = Vector3.zero;
+        StartCoroutine(AnimateTile(mapObject, ogScale));
+        mapObject.transform.position += new Vector3(0, 0, _spawnOffset);
+        _spawnOffset += spawnOffset;
+        currentMapObjects.Enqueue(mapObject);
+        curIndex++;
+    }
+
 
     IEnumerator AnimateTile(GameObject g, Vector3 ogScale)
     {
