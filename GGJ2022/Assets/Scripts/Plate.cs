@@ -18,6 +18,10 @@ public class Plate : MonoBehaviour
     private Material bm0;
     private void Start()
     {
+        if(baseMaterialObject == null)
+        {
+            baseMaterialObject = transform.GetChild(0).gameObject;
+        }
         int rand = Random.Range(1, 20);
         int rand2 = Random.Range(1, 20);
         if (rand > 17)
