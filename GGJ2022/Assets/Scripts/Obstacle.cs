@@ -18,6 +18,7 @@ public class Obstacle : MonoBehaviour
 
             SoundManager.PlayASource("Hit");
             c.PlayDamageTakeAnimation();
+            c.UpdateHealthText();
         }
     }
 }

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
     public float health = 3;
+
+    public Text healthText;
 
     public float jumpSpeed = 0;
 
@@ -136,6 +139,11 @@ public class Character : MonoBehaviour
             Dead();
         }
       
+    }
+
+    public void UpdateHealthText()
+    {
+        healthText.text = health.ToString() + "/3";
     }
 
     public void Dead()
