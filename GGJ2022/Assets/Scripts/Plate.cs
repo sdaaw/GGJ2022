@@ -49,16 +49,21 @@ public class Plate : MonoBehaviour
     {
         if(plateType == PlateType.Red)
         {
-            PulseColor(Color.red);
+            PulseColorRed();
         }
         if (plateType == PlateType.Blue)
         {
-            PulseColor(Color.blue);
+            PulseColorBlue();
         }
     }
 
-    public void PulseColor(Color color)
+    public void PulseColorRed()
     {
-        bm0.color = new Color(color.r + Mathf.Max(0.6f, Mathf.Sin(Time.time * 4) * 2), color.g + Mathf.Max(0.6f, Mathf.Sin(Time.time * 4) * 2), color.b + Mathf.Max(0.6f, Mathf.Sin(Time.time * 4) * 2));
+        bm0.color = new Color(Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 5), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2));
+    }
+
+    public void PulseColorBlue()
+    {
+        bm0.color = new Color(Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 5));
     }
 }
