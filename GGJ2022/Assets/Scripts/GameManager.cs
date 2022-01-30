@@ -11,8 +11,26 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
 
+    private bool _gameOver = false;
+
+    public bool IsGameOver()
+    {
+        return _gameOver;
+    }
+
     private void Update()
     {
+        if (_gameOver)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+
+            return;
+        }
+            
+
         RotateLevel.speedIncrease = gameDifficultyScaler;
 
         AddScore(Time.deltaTime * 10);
@@ -29,7 +47,15 @@ public class GameManager : MonoBehaviour
     {
         if(scoreText != null)
         {
-            scoreText.text = score.ToString("F2");
+            scoreText.text = score.ToString("F0");
         }
+    }
+
+    public void GameOver()
+    {
+        _gameOver = true;
+        SoundManager.PlayASource("Lose");
+        //Display final score
+        //restart
     }
 }

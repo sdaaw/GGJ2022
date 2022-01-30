@@ -35,6 +35,8 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float _jumpHeight = 5;
 
+    private bool isDead;
+
     public enum CharacterType
     {
         Character1,
@@ -46,6 +48,12 @@ public class Character : MonoBehaviour
     [SerializeField]
     private GameObject _character2;
 
+    private Animator _c1Anim;
+    private Animator _c2Anim;
+
+    private Animator _c1ImageAnim;
+    private Animator _c2ImageAnim;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -56,14 +64,31 @@ public class Character : MonoBehaviour
         _startPos = transform.position;
         _highPos = _startPos + new Vector3(0, _jumpHeight, 0);
 
+        _c1Anim = _character1.GetComponentInChildren<Animator>();
+        _c2Anim = _character2.GetComponentInChildren<Animator>();
+
+        _c1ImageAnim = transform.GetChild(0).GetComponentInChildren<Animator>();
+
+    }
+
+    public void PlayDamageTakeAnimation()
+    {
+        _c1ImageAnim.SetTrigger("TakeDmg");
     }
 
     private void Update()
     {
+        if(isDead)
+        {
+            transform.Rotate(Random.insideUnitCircle.normalized, 1f);
+        }
         CheckUnder();
 
         if (IsGrounded() && Input.GetKeyDown(jumpKey))
         {
+            if (_isJumping)
+                return;
+
             Jump();
         }
 
@@ -100,11 +125,18 @@ public class Character : MonoBehaviour
 
     public void Dead()
     {
-        Debug.Log("ded");
+        isDead = true;
+        _rigidbody.isKinematic = false;
+        _rigidbody.useGravity = true;
+        _rigidbody.mass = 10f;
+        _rigidbody.constraints = RigidbodyConstraints.None;
+
+        FindObjectOfType<GameManager>().GameOver();
     }
 
     public void SwapCharacter()
     {
+        SoundManager.PlayASource("Teleport");
         characterType = (characterType == CharacterType.Character1) ? CharacterType.Character2 : CharacterType.Character1;
         if(characterType == CharacterType.Character1)
         {
@@ -133,6 +165,12 @@ public class Character : MonoBehaviour
     {
         //_rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
         _isJumping = true;
+        SoundManager.PlayASource("Jump");
+
+        if (characterType == CharacterType.Character1)
+            _c1Anim.SetTrigger("Jump");
+        else
+            _c2Anim.SetTrigger("Jump");
     }
 
     public void CheckUnder()
@@ -153,6 +191,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler += .25f;
                     if (gm.gameDifficultyScaler > 15)
                         gm.gameDifficultyScaler = 15;
+                    SoundManager.PlayASource("GoodScore");
                 }
                 else if(plate.plateType == Plate.PlateType.Blue && characterType == CharacterType.Character2)
                 {
@@ -160,6 +199,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler -= .5f;
                     if (gm.gameDifficultyScaler < 1)
                         gm.gameDifficultyScaler = 1;
+                    SoundManager.PlayASource("BadScore");
                 }
                 else if(plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character2)
                 {
@@ -168,6 +208,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler += .25f;
                     if (gm.gameDifficultyScaler > 15)
                         gm.gameDifficultyScaler = 15;
+                    SoundManager.PlayASource("GoodScore");
                 }
                 else if (plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character1)
                 {
@@ -175,6 +216,12 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler -= .5f;
                     if (gm.gameDifficultyScaler < 1)
                         gm.gameDifficultyScaler = 1;
+                    SoundManager.PlayASource("BadScore");
+                }
+                else if(plate.plateType == Plate.PlateType.Empty)
+                {
+                    Destroy(plate.gameObject);
+                    Dead();
                 }
             }   
         }
