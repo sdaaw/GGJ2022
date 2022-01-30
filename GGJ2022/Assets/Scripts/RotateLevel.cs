@@ -25,18 +25,25 @@ public class RotateLevel : MonoBehaviour
     [SerializeField]
     private KeyCode Right;
 
+    private GameManager _gm;
+
     private void Awake()
     {
         //_characterOfLevel = FindObjectOfType<Character>();
         _rotateCooldown = 0;
         //Physics.gravity *= 3;
         //_originalGravityScale = Physics.gravity;
+
+        _gm = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
         //if(game is not paused)
         //speedIncrease = speedIncreaseInspector;
+
+        if (_gm.IsGameOver())
+            return;
 
         if (_rotateCooldown <= 0)
         {
