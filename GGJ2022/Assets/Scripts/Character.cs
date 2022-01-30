@@ -120,6 +120,7 @@ public class Character : MonoBehaviour
 
     public void SwapCharacter()
     {
+        SoundManager.PlayASource("Teleport");
         characterType = (characterType == CharacterType.Character1) ? CharacterType.Character2 : CharacterType.Character1;
         if(characterType == CharacterType.Character1)
         {
@@ -169,6 +170,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler += .25f;
                     if (gm.gameDifficultyScaler > 15)
                         gm.gameDifficultyScaler = 15;
+                    SoundManager.PlayASource("GoodScore");
                 }
                 else if(plate.plateType == Plate.PlateType.Blue && characterType == CharacterType.Character2)
                 {
@@ -176,6 +178,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler -= .5f;
                     if (gm.gameDifficultyScaler < 1)
                         gm.gameDifficultyScaler = 1;
+                    SoundManager.PlayASource("BadScore");
                 }
                 else if(plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character2)
                 {
@@ -184,6 +187,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler += .25f;
                     if (gm.gameDifficultyScaler > 15)
                         gm.gameDifficultyScaler = 15;
+                    SoundManager.PlayASource("GoodScore");
                 }
                 else if (plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character1)
                 {
@@ -191,6 +195,7 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler -= .5f;
                     if (gm.gameDifficultyScaler < 1)
                         gm.gameDifficultyScaler = 1;
+                    SoundManager.PlayASource("BadScore");
                 }
                 else if(plate.plateType == Plate.PlateType.Empty)
                 {

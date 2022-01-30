@@ -538,6 +538,7 @@ MonoBehaviour:
   - {x: 0, y: 4.8, z: 2.42}
   - {x: -4.2700005, y: 2.2599995, z: 2.69}
   - {x: -4.330001, y: -2.530001, z: 2.69}
+  isRandomMode: 1
 --- !u!114 &546432925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,6 +1324,7 @@ MonoBehaviour:
   - {x: 0, y: 4.8, z: 2.42}
   - {x: -4.2700005, y: 2.2599995, z: 2.69}
   - {x: -4.330001, y: -2.530001, z: 2.69}
+  isRandomMode: 1
 --- !u!114 &1326698165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2421,6 +2423,18 @@ MonoBehaviour:
     aName: Hit
   - aSource: {fileID: 5728561745971467296, guid: 8435cb18064bfdd49acd8a0ca9851f10, type: 3}
     aName: Jump
+  - aSource: {fileID: 387154558705722601, guid: 9d2d9bfad85461b4996767f64f82238d, type: 3}
+    aName: BadScore
+  - aSource: {fileID: 6157863599701167700, guid: 5699283a365bcbb4788324e1f8352d51, type: 3}
+    aName: GoodScore
+  - aSource: {fileID: 5208229665888217119, guid: 4c7c1d9021537fe4db793775f59eaf1a, type: 3}
+    aName: Klick
+  - aSource: {fileID: 5949008942939662182, guid: 8984cd2b6727e5a479a1a52d403b3991, type: 3}
+    aName: Lose
+  - aSource: {fileID: 8350703747888881461, guid: fdbc20390d36f714abd49272390c8e8a, type: 3}
+    aName: Win
+  - aSource: {fileID: 3508604297252997636, guid: 1de1e50937004524aa353f0e8f315624, type: 3}
+    aName: Teleport
 --- !u!1 &1956526077
 GameObject:
   m_ObjectHideFlags: 0

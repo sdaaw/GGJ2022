@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _gameOver = true;
+        SoundManager.PlayASource("Lose");
         //Display final score
         //restart
     }
