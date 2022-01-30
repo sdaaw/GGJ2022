@@ -35,6 +35,8 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float _jumpHeight = 5;
 
+    private bool isDead;
+
     public enum CharacterType
     {
         Character1,
@@ -60,6 +62,10 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
+        if(isDead)
+        {
+            transform.Rotate(Random.insideUnitCircle.normalized, 1f);
+        }
         CheckUnder();
 
         if (IsGrounded() && Input.GetKeyDown(jumpKey))
@@ -103,7 +109,11 @@ public class Character : MonoBehaviour
 
     public void Dead()
     {
-        Debug.Log("ded");
+        isDead = true;
+        _rigidbody.isKinematic = false;
+        _rigidbody.useGravity = true;
+        _rigidbody.mass = 10f;
+        _rigidbody.constraints = RigidbodyConstraints.None;
     }
 
     public void SwapCharacter()
@@ -179,6 +189,11 @@ public class Character : MonoBehaviour
                     gm.gameDifficultyScaler -= .5f;
                     if (gm.gameDifficultyScaler < 1)
                         gm.gameDifficultyScaler = 1;
+                }
+                else if(plate.plateType == Plate.PlateType.Empty)
+                {
+                    Destroy(plate.gameObject);
+                    Dead();
                 }
             }   
         }
