@@ -64,6 +64,9 @@ public class Character : MonoBehaviour
 
         if (IsGrounded() && Input.GetKeyDown(jumpKey))
         {
+            if (_isJumping)
+                return;
+
             Jump();
         }
 
@@ -133,6 +136,7 @@ public class Character : MonoBehaviour
     {
         //_rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
         _isJumping = true;
+        SoundManager.PlayASource("Jump");
     }
 
     public void CheckUnder()

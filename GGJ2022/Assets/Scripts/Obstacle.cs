@@ -13,6 +13,7 @@ public class Obstacle : MonoBehaviour
             Character c = other.GetComponent<Character>();
             c.health -= damage;
             //TODO: slow down the game when taking dmg?
+            SoundManager.PlayASource("Hit");
         }
     }
 }
