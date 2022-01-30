@@ -59,11 +59,11 @@ public class Plate : MonoBehaviour
 
     public void PulseColorRed()
     {
-        bm0.color = new Color(Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 5), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2));
+        bm0.color = new Color(Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 10), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2));
     }
 
     public void PulseColorBlue()
     {
-        bm0.color = new Color(Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 5));
+        bm0.color = new Color(Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(0.8f, Mathf.Sin(Time.time * 4) * 2), Mathf.Max(2f, Mathf.Sin(Time.time * 4) * 10));
     }
 }
