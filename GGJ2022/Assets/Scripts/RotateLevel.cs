@@ -54,11 +54,14 @@ public class RotateLevel : MonoBehaviour
 
     IEnumerator SmoothRotate(Vector3 dir, float degrees)
     {
-        Quaternion rot;
-        for(float i = 0; i < 1; i += 0.01f)
+        _rotateCooldown = RotateCooldown;
+        Vector3 rot;
+        Vector3 totalRot = Vector3.zero;
+        for (float i = 0; i <= degrees; i += 1f)
         {
-            rot = Quaternion.Euler(i * degrees * dir);
-            _levelObject.rotation = rot;
+            rot = i * dir / 30.5f; //magic
+            _levelObject.Rotate(rot);
+            totalRot += rot;
             yield return new WaitForSeconds(0.001f);
         }
     }
@@ -67,7 +70,6 @@ public class RotateLevel : MonoBehaviour
     {
         if (Input.GetKeyDown(Right))
         {
-            _rotateCooldown = RotateCooldown;
             //.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             //_levelObject.Rotate(Vector3.forward, 60);
             StartCoroutine(SmoothRotate(Vector3.forward, 60));
@@ -77,7 +79,6 @@ public class RotateLevel : MonoBehaviour
         }
         else if (Input.GetKeyDown(Left))
         {
-            _rotateCooldown = RotateCooldown;
             //_characterOfLevel.transform.position = new Vector3(_characterOfLevel.transform.position.x, 5, _characterOfLevel.transform.position.z);
             //_levelObject.Rotate(Vector3.back, 60);
             StartCoroutine(SmoothRotate(Vector3.back, 60));
