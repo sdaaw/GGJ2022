@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
 
     private bool _gameOver = false;
 
+    public GameObject gameOverScreen;
+    public Text gameOverScoreText;
+
     public bool IsGameOver()
     {
         return _gameOver;
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                Application.LoadLevel(Application.loadedLevel);
+                ReloadLevel();
             }
 
             return;
@@ -36,6 +39,16 @@ public class GameManager : MonoBehaviour
         AddScore(Time.deltaTime * 10);
 
         UpdateScoreText();
+    }
+    
+    public void ReloadLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void GoToMenu()
+    {
+        Application.LoadLevel(0);
     }
 
     public void AddScore(float amount)
@@ -55,6 +68,8 @@ public class GameManager : MonoBehaviour
     {
         _gameOver = true;
         SoundManager.PlayASource("Lose");
+        gameOverScreen.SetActive(true);
+        gameOverScoreText.text = "Final Score:" + score.ToString("F0");
         //Display final score
         //restart
     }
