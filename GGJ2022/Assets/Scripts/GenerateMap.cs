@@ -32,6 +32,8 @@ public class GenerateMap : MonoBehaviour
 
     private GameManager _gm;
 
+    public bool isRandomMode = true;
+    private int _curTileIndex = 0;
 
     private void Start()
     {
@@ -50,7 +52,21 @@ public class GenerateMap : MonoBehaviour
         if(_newTileTimer <= 0)
         {
             _newTileTimer = NewTileTimer;
-            GenerateMapObject();
+            if(isRandomMode)
+                GenerateMapObject();
+            else
+            {
+                if(_curTileIndex > _prefabs.Count - 1)
+                {
+                    //map finished
+                    //spawn map end or something
+                }
+                else
+                {
+                    AddNextTile(_curTileIndex);
+                    _curTileIndex++;
+                }
+            }
         }
         else
         {
@@ -70,11 +86,23 @@ public class GenerateMap : MonoBehaviour
 
     private void InitMap()
     {
-        //first one is 6 safe
-        GenerateSafeMapObject();
+        if(isRandomMode)
+        {
+            //first one is 6 safe
+            GenerateSafeMapObject();
 
-        for (int i = 1; i < startAmount; i++)
-            GenerateMapObject();
+            for (int i = 1; i < startAmount; i++)
+                GenerateMapObject();
+        }
+        else
+        {
+            int index;
+            for (index = 0; index < 3; index++)
+                AddNextTile(index);
+
+            _curTileIndex = index + 1;
+        }
+       
     }
 
     private void AddNewRandomTile()
@@ -105,7 +133,6 @@ public class GenerateMap : MonoBehaviour
         mapObject.transform.position += new Vector3(0, 0, _spawnOffset);
         _spawnOffset += spawnOffset;
         currentMapObjects.Enqueue(mapObject);
-        curIndex++;
     }
 
 
