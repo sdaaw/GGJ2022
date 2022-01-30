@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         if(scoreText != null)
         {
-            scoreText.text = score.ToString("F2");
+            scoreText.text = score.ToString("F0");
         }
     }
 
