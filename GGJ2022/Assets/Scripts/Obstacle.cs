@@ -12,8 +12,12 @@ public class Obstacle : MonoBehaviour
         {
             Character c = other.GetComponent<Character>();
             c.health -= damage;
-            //TODO: slow down the game when taking dmg?
+
+            if (c.health <= 0)
+                return;
+
             SoundManager.PlayASource("Hit");
+            c.PlayDamageTakeAnimation();
         }
     }
 }

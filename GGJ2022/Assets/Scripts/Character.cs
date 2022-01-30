@@ -48,6 +48,12 @@ public class Character : MonoBehaviour
     [SerializeField]
     private GameObject _character2;
 
+    private Animator _c1Anim;
+    private Animator _c2Anim;
+
+    private Animator _c1ImageAnim;
+    private Animator _c2ImageAnim;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -58,6 +64,16 @@ public class Character : MonoBehaviour
         _startPos = transform.position;
         _highPos = _startPos + new Vector3(0, _jumpHeight, 0);
 
+        _c1Anim = _character1.GetComponentInChildren<Animator>();
+        _c2Anim = _character2.GetComponentInChildren<Animator>();
+
+        _c1ImageAnim = transform.GetChild(0).GetComponentInChildren<Animator>();
+
+    }
+
+    public void PlayDamageTakeAnimation()
+    {
+        _c1ImageAnim.SetTrigger("TakeDmg");
     }
 
     private void Update()
@@ -150,6 +166,11 @@ public class Character : MonoBehaviour
         //_rigidbody.AddForce(Vector3.up * Mathf.Clamp(jumpSpeed * _rotateLevel.speedIncrease, 1, 1500));
         _isJumping = true;
         SoundManager.PlayASource("Jump");
+
+        if (characterType == CharacterType.Character1)
+            _c1Anim.SetTrigger("Jump");
+        else
+            _c2Anim.SetTrigger("Jump");
     }
 
     public void CheckUnder()

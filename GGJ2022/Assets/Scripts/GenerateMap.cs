@@ -90,8 +90,9 @@ public class GenerateMap : MonoBehaviour
         {
             //first one is 6 safe
             GenerateSafeMapObject();
+            GenerateSafeMapObject();
 
-            for (int i = 1; i < startAmount; i++)
+            for (int i = 2; i < startAmount; i++)
                 GenerateMapObject();
         }
         else
