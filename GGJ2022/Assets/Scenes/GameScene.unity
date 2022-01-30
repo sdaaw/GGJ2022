@@ -686,7 +686,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -1551,7 +1550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &943602398
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1979,7 +1978,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 1
   m_AntialiasingQuality: 2
@@ -3412,6 +3410,8 @@ MonoBehaviour:
   scoreText: {fileID: 1301484941}
   gameOverScreen: {fileID: 943602397}
   gameOverScoreText: {fileID: 1643395250}
+  gameWonScreen: {fileID: 0}
+  gameWonScroeText: {fileID: 0}
 --- !u!4 &1933451828
 Transform:
   m_ObjectHideFlags: 0
@@ -3871,7 +3871,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
