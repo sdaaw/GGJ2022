@@ -61,15 +61,15 @@ public class RotateLevel : MonoBehaviour
 
     IEnumerator SmoothRotate(Vector3 dir, float degrees)
     {
-        _rotateCooldown = RotateCooldown;
         if(_rotateCooldown <= 0)
         {
+            _rotateCooldown = RotateCooldown;
             Vector3 rot;
             for (float i = 0; i <= degrees; i += 1f)
             {
                 rot = i * dir / 30.5f; //magic
                 _levelObject.Rotate(rot);
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0001f);
             }
         }
     }
