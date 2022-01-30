@@ -114,6 +114,8 @@ public class Character : MonoBehaviour
         _rigidbody.useGravity = true;
         _rigidbody.mass = 10f;
         _rigidbody.constraints = RigidbodyConstraints.None;
+
+        FindObjectOfType<GameManager>().GameOver();
     }
 
     public void SwapCharacter()
