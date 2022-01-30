@@ -69,7 +69,7 @@ public class RotateLevel : MonoBehaviour
             {
                 rot = i * dir / 30.5f; //magic
                 _levelObject.Rotate(rot);
-                yield return new WaitForSeconds(0.0001f);
+                yield return new WaitForSeconds(0.00001f);
             }
         }
     }
