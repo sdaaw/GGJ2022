@@ -68,12 +68,27 @@ public class Character : MonoBehaviour
         _c2Anim = _character2.GetComponentInChildren<Animator>();
 
         _c1ImageAnim = transform.GetChild(0).GetComponentInChildren<Animator>();
+        _c2ImageAnim = transform.GetChild(1).GetComponentInChildren<Animator>();
+
+        if (characterType == CharacterType.Character1)
+        {
+            _c1ImageAnim.gameObject.SetActive(true);
+            _c2ImageAnim.gameObject.SetActive(false);
+        }
+        else
+        {
+            _c1ImageAnim.gameObject.SetActive(false);
+            _c2ImageAnim.gameObject.SetActive(true);
+        }
 
     }
 
     public void PlayDamageTakeAnimation()
     {
-        _c1ImageAnim.SetTrigger("TakeDmg");
+        if (characterType == CharacterType.Character1)
+            _c1ImageAnim.SetTrigger("TakeDmg");
+        else
+            _c2ImageAnim.SetTrigger("TakeDmg");
     }
 
     private void Update()
@@ -142,11 +157,15 @@ public class Character : MonoBehaviour
         {
             _character1.SetActive(true);
             _character2.SetActive(false);
+            _c1ImageAnim.gameObject.SetActive(true);
+            _c2ImageAnim.gameObject.SetActive(false);
         }
         else if(characterType == CharacterType.Character2)
         {
             _character1.SetActive(false);
             _character2.SetActive(true);
+            _c1ImageAnim.gameObject.SetActive(false);
+            _c2ImageAnim.gameObject.SetActive(true);
         }
     }
 
