@@ -109,6 +109,13 @@ public class GenerateMap : MonoBehaviour
             Plate plate = Instantiate(_platePrefabs[Random.Range(0, _platePrefabs.Count)], cylinderHolder.transform);
             plate.transform.Rotate(Vector3.forward, i * 60);
             plate.transform.localPosition = _platePositions[i];
+
+            int r = Random.Range(0, 100);
+            if(r<25)
+            {
+                plate.plateType = Plate.PlateType.Empty;
+                plate.GetComponentInChildren<MeshRenderer>().enabled = false;
+            }
         }
 
         Vector3 ogScale;

@@ -143,8 +143,39 @@ public class Character : MonoBehaviour
             Plate plate = hit.collider.GetComponent<Plate>();
             if(plate != null && plate != currentPlate)
             {
-                Debug.Log(plate.plateType);
+                //Debug.Log(plate.plateType);
                 currentPlate = plate;
+
+                if(plate.plateType == Plate.PlateType.Blue && characterType == CharacterType.Character1)
+                {
+                    GameManager gm = FindObjectOfType<GameManager>();
+                    gm.AddScore(1000);
+                    gm.gameDifficultyScaler += .25f;
+                    if (gm.gameDifficultyScaler > 15)
+                        gm.gameDifficultyScaler = 15;
+                }
+                else if(plate.plateType == Plate.PlateType.Blue && characterType == CharacterType.Character2)
+                {
+                    GameManager gm = FindObjectOfType<GameManager>();
+                    gm.gameDifficultyScaler -= .5f;
+                    if (gm.gameDifficultyScaler < 1)
+                        gm.gameDifficultyScaler = 1;
+                }
+                else if(plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character2)
+                {
+                    GameManager gm = FindObjectOfType<GameManager>();
+                    gm.AddScore(1000);
+                    gm.gameDifficultyScaler += .25f;
+                    if (gm.gameDifficultyScaler > 15)
+                        gm.gameDifficultyScaler = 15;
+                }
+                else if (plate.plateType == Plate.PlateType.Red && characterType == CharacterType.Character1)
+                {
+                    GameManager gm = FindObjectOfType<GameManager>();
+                    gm.gameDifficultyScaler -= .5f;
+                    if (gm.gameDifficultyScaler < 1)
+                        gm.gameDifficultyScaler = 1;
+                }
             }   
         }
     }
